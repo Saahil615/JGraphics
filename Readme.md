@@ -17,9 +17,7 @@ This package has a total of 7 accessible classes:
 </ul>
 
 ## Installation and Usage
-As of now, the package has to be manually installed by either cloning this repository or downloading the zip file and unzipping it.
-
-A Maven repository will be made available soon.
+The package has to be manually installed by either cloning this repository or downloading the zip file and unzipping it.
 
 ## License
 The project is licensed under the MIT License.
