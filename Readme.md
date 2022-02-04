@@ -3,7 +3,7 @@
 This package is aimed at making Java more oriented towards creative coding and creating a platform for visual drawing to be created easily
 
 ## Version
-1.1.0
+2.3.0
 ## Features
 This package has a total of 7 accessible classes:
 <ul>
@@ -17,7 +17,9 @@ This package has a total of 7 accessible classes:
 </ul>
 
 ## Installation and Usage
-The package has to be manually installed by either cloning this repository or downloading the zip file and unzipping it.
+As of now, the package has to be manually installed by either cloning this repository or downloading the zip file and unzipping it.
+
+A Maven repository will be made available soon.
 
 ## License
 The project is licensed under the MIT License.

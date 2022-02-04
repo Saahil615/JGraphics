@@ -8,6 +8,8 @@ import java.util.Objects;
 /**
  * To draw static images
  * A class using this must be a subclass
+ * protected instance variables:
+ * int width, height specify the width and height of the current drawing window
  */
 public class Paint extends JPanel
 {
@@ -38,13 +40,29 @@ public class Paint extends JPanel
         Graphics2D sc = (Graphics2D)g1;
         sc.drawImage(img,0,0,this);
     }
+
+    /**
+     * Sets the thickness of the stroke
+     * @param weight The thickness of the stroke
+     */
     public void strokeWeight(int weight)
     {
         in.strokeWeight = weight;
     }
+
+    /**
+     * Once this function is called, every shape drawn will not be filled until a fill function is called
+     */
     public void noFill(){
         in.fill = false;
     }
+
+    /**
+     * Draws a circle
+     * @param x x position of centre
+     * @param y y position of centre
+     * @param r radius of circle
+     */
     public void circle(int x,int y,int r)
     {
         if(in.stroke){
@@ -57,16 +75,33 @@ public class Paint extends JPanel
             g.fill(new Ellipse2D.Double(x-r,y-r,r,r));
         }
     }
+
+    /**
+     * After this function is called, every shape drawn will not have an outline until a stroke function is called
+     */
     public void noStroke()
     {
         in.stroke = false;
     }
+
+    /**
+     * Draws a point with the size of the stroke
+     * @param x x position of point
+     * @param y y position of point
+     */
     public void point(int x,int y)
     {
         g.setStroke(new BasicStroke(in.strokeWeight));
         g.setPaint(in.Stroke);
         g.drawLine(x,y,x,y);
     }
+
+    /**
+     * Draws a square
+     * @param x x position of the top left corner
+     * @param y y position of the top left corner
+     * @param s side length of square
+     */
     public void square(int x,int y,int s)
     {
         if(in.stroke){
@@ -81,13 +116,13 @@ public class Paint extends JPanel
     }
 
     /**
-     * To create a non-regular rectilinear figure
+     * Starts the drawing of a custom rectilinear non-regular shape
      * @param type Specifies the type of figure needed(String)
      *             POLY reorders vertices to create a valid polygon, fills it
      *             TRIS splits the vertices into groups of triangles, fills them
      *             QUADS splits the vertices into groups of quadrilaterals, fills them
      *             OPEN does no reordering, dos not fill the shape
-     *             Closed does no reordering, fills the shape
+     *             CLOSED does no reordering, fills the shape
      * @exception RuntimeException if type is invalid
      */
     public void startShape(String type)
@@ -106,18 +141,42 @@ public class Paint extends JPanel
             throw new RuntimeException("Invalid shape type\nExpected \"POLY\", \"TRIS\",\"QUADS\",\"OPEN\"  or \"CLOSED\"\n received \""+type+"\"");
         }
     }
+
+    /**
+     * Sets the title of the drawing window
+     * Should preferably be called in setup();
+     * @param title The title of the window
+     */
     public void title(String title)
     {
         this.title = title;
     }
+
+    /**
+     * Adds a vertex to the custom shape being drawn
+     * @param x x position of vertex
+     * @param y y position of vertex
+     */
     public void vertex(int x,int y)
     {
         c.addVertex(new Vertex(x,y));
     }
+
+    /**
+     * Ends the drawing of the custom shape and displays it
+     */
     public void endShape()
     {
         c.draw(g,in);
     }
+
+    /**
+     * draws a rectangle
+     * @param x x position of top left corner
+     * @param y y position of top left corner
+     * @param w width of rectangle
+     * @param h height of rectangle
+     */
     public void rect(int x,int y,int w,int h)
     {
         if(in.stroke){
@@ -148,6 +207,16 @@ public class Paint extends JPanel
             g.fillArc(x,y,w,h,sa,ea);
         }
     }
+
+    /**
+     * Draws a triangle
+     * @param x1 x position of first vertex
+     * @param y1 y position of first vertex
+     * @param x2 x position of second vertex
+     * @param y2 y position of second vertex
+     * @param x3 x position of third vertex
+     * @param y3 y position of third vertex
+     */
     public void triangle(int x1,int y1,int x2,int y2,int x3,int y3)
     {
         int[] xp = {x1,x2,x3};
@@ -162,6 +231,14 @@ public class Paint extends JPanel
             g.fillPolygon(xp,yp,3);
         }
     }
+
+    /**
+     * Draws an ellipse
+     * @param x x position of centre
+     * @param y y position of centre
+     * @param w width of ellipse
+     * @param h height of ellipse
+     */
     public void ellipse(int x,int y,int w,int h)
     {
         if(in.stroke){
@@ -179,6 +256,7 @@ public class Paint extends JPanel
      * Sets outline colour
      * @param param Can either be red,green,blue or just grayscale
      *              Range = 0-255
+     * @exception RuntimeException if the number of arguments is invalid
      */
     public void stroke(int ... param)
     {
@@ -193,8 +271,9 @@ public class Paint extends JPanel
 
     /**
      * Sets fill colour
-     * @param param Can either be red,green,blue or just grayscale
+     * @param param Can either be (red,green,blue) or just (grayscale)
      *              Range = 0-255
+     * @exception RuntimeException if the number of arguments is invalid
      */
     public void fill(int ... param)
     {
@@ -206,6 +285,14 @@ public class Paint extends JPanel
             throw new RuntimeException("Invalid colour arguments\n Expected 1 or 3 inputs received "+param.length);
         }
     }
+
+    /**
+     * Draws a line
+     * @param x1 x position of first point
+     * @param y1 y position of first point
+     * @param x2 x position of second point
+     * @param y2 y position of second point
+     */
     public void line(int x1,int y1,int x2,int y2)
     {
         g.setStroke(new BasicStroke(in.strokeWeight));
@@ -221,7 +308,7 @@ public class Paint extends JPanel
      * @param h height of ellipse
      * @param sa Angle at which the arc begins, in degrees
      * @param ea Angle at which the arc ends, in degrees
-     * 0 refers to the top ,180 to bottom
+     * 0 refers to the top ,180 to the bottom
      */
     public void arc(int x,int y,int w, int h,int sa,int ea)
     {
@@ -235,8 +322,9 @@ public class Paint extends JPanel
     /**
      * Sets background colour
      * Should be called before drawing, clears the screen when called
-     * @param param Can either be red,green,blue or just grayscale
+     * @param param Can either be (red,green,blue) or just (grayscale)
      *              Range = 0-255
+     * @exception RuntimeException if the number of arguments is invalid
      */
     public void background(int... param){
         if(param.length == 1){

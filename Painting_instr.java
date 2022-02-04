@@ -15,20 +15,43 @@ class Painting_instr
     boolean fill = true;
     boolean stroke = true;
     int strokeWeight =  1;
+
+    /**
+     * Sets the fill colour
+     * @param a the colour to set the fill to
+     */
     public void fill(Color a){
         Fill = a;
         fill = true;
     }
+
+    /**
+     * Sets the stroke colour
+     * @param a the colour to set the stroke to
+     */
     public void stroke(Color a){
         Stroke = a;
         stroke = true;
     }
+
+    /**
+     * Turns off fill
+     */
     public void noFill(){
         fill = false;
     }
+
+    /**
+     * Turns off stroke
+     */
     public void noStroke(){
         stroke = false;
     }
+
+    /**
+     * Sets the stroke thickness
+     * @param sw the thickness to set the stroke to
+     */
     public void strokeWeight(int sw){
         strokeWeight = sw;
     }

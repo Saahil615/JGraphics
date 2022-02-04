@@ -14,6 +14,12 @@ class Polygon
         temp[vert.length] = a;
         vert = temp;
     }
+
+    /**
+     * Draws the polygon to the screen
+     * @param g Graphics context to draw to
+     * @param p Painting instructions specifying the color and style of the polygon
+     */
     public void draw(Graphics2D g,Painting_instr p){
         if(!strict){
             sort();
@@ -48,6 +54,10 @@ class Polygon
             }
         }
     }
+
+    /**
+     * Sorts the vertices in the polygon to create a convex shape and prevent any crossing lines
+     */
     public void sort(){
         Order o = new Order();
         for(Vertex a:vert){

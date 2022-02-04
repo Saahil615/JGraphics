@@ -1,3 +1,8 @@
+/**
+ * Sorts the vertices of a polygon to create a valid order
+ * This is a helper class for the Polygon class
+ * Method employed: merge sort
+ */
 class Sort
 {
     void merge(Vertex[] arr, int l, int m, int r)
