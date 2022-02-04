@@ -1,9 +1,15 @@
 
 public class Utilities {
+    /**
+     *  Converts a value in degrees to radians
+     * @param degrees The value in degrees
+     * @return the value in radians
+     */
     public static double radians(double degrees)
     {
         return degrees*Math.PI/180;
     }
+
     public static double degrees(double radians)
     {
         return radians*180/Math.PI;

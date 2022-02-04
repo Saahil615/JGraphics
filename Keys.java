@@ -1,7 +1,7 @@
 public class Keys {
     /**
-     * KeyCodes for all KeyEvents
-     *https://docs.oracle.com/javase/7/docs/api/constantvalues.html#java.awt.event.KeyEvent.VK_0
+     * KeyCodes for all KeyEvents<br>
+     *<a src = https://docs.oracle.com/javase/7/docs/api/constantvalues.html#java.awt.event.KeyEvent.VK_0> Official values for these</a>
      */
     public static final int VK_0 = 48;
     public static final int VK_1 = 49;

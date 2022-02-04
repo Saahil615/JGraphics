@@ -5,7 +5,20 @@ import java.awt.event.*;
 import java.time.Duration;
 import java.time.Instant;
 
-
+/**
+ * This class supports drawing dynamic images.
+ *
+ * Support for handling keyboard and mouse events is included.
+ * protected methods are provided for subclasses to override.
+ * protected instance variables are provided for subclasses to use.
+ *
+ * mouseX and mouseY are the current mouse position.
+ * key is the keycode of the last key pressed. Use the Keys class to interpret.
+ * fps is the current frames per second.
+ * shift_down is true if the shift key is down.
+ * ctrl_down is true if the ctrl key is down.
+ * alt_down is true if the alt key is down.
+ */
 public class Graphics extends Paint implements Runnable
 {
     protected int mouseX;
@@ -86,11 +99,6 @@ public class Graphics extends Paint implements Runnable
             }
         });
     }
-
-    /**
-     * Internal handling of different MouseEvents
-     * @param i Type of mouseEvent
-     */
     private void mouseIsPressed(int i){
         if(i == 0)
             mousePressed();
@@ -157,36 +165,86 @@ public class Graphics extends Paint implements Runnable
             fps = (int) a_fps;
         }
     }
-    //---------------------
-    // Events to be overridden by child classes
-    //---------------------
+
+    /**
+     * Called when the mouse is pressed
+     * Should be overridden to be used
+     */
     protected void mousePressed(){
 
     }
+
+    /**
+     * Called when the mouse position is changed
+     * Should be overridden to be used
+     */
     protected void mouseMoved(){
 
     }
+
+    /**
+     * Called when the mouse is clicked and released
+     * Should be overridden to be used
+     */
     protected void mouseClicked(){
 
     }
+
+    /**
+     * Called when the mouse is released
+     * Should be overridden to be used
+     */
     protected void mouseReleased(){
 
     }
+
+    /**
+     * Called when the mouse is dragged
+     * Should be overridden to be used
+     */
     protected void mouseDragged(){
 
     }
+
+    /**
+     * Called when any key is pressed
+     * Should be overridden to be used
+     */
     protected void keyPressed(){
 
     }
+
+    /**
+     * Called when any key is released
+     * Should be overridden to be used
+     */
     protected void keyReleased(){
 
     }
+
+    /**
+     * Called when any key is pressed and then released
+     * Should be overridden to be used
+     */
     protected void keyTyped(){
 
     }
+
+    /**
+     * Called when the mouse scroll wheel is moved
+     * Should be overridden to be used
+     */
     protected void mouseScrolled(){
 
     }
+
+    /**
+     * This function is called when the animation is created and executed only once, before the first frame
+     * It must contain createCanvas()
+     * the default fps is 60, but can be changed by calling setFps(int fps)
+     * the default size is (200,200) but can be changed by calling setSize(int width, int height)
+     * Both these functions should be called before any drawing is done.
+     */
     @Override
     protected void setup(){
 
@@ -199,11 +257,6 @@ public class Graphics extends Paint implements Runnable
     protected void draw(){
 
     }
-
-    /**
-     * Internal handling of various KeyEvents
-     * @param i Representation of a KeyEvent
-     */
     private void keyIsPressed(int i){
         if(i == 0)
             keyPressed();
@@ -213,6 +266,7 @@ public class Graphics extends Paint implements Runnable
             keyTyped();
         repaint();
     }
+
     @Override
     protected final void go(){
         setup();

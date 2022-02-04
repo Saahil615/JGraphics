@@ -1,10 +1,18 @@
 import java.io.*;
+
+/**
+ * This class simplifies the process of reading and writing files.
+ */
 public class File
 {
     private BufferedReader br;
     private BufferedWriter bw;
     private final String path;
 
+    /**
+     * Constructor for objects of class File
+     * @param f The path of the file to be opened.
+     */
     public File(String f)
     {
         path = f;
@@ -24,6 +32,11 @@ public class File
             }
         }
     }
+
+    /**
+     * Resets the file to the beginning for reading.
+     * Should be called before reading the file using nextLine().
+     */
     public void openFile()
     {
         try
@@ -36,6 +49,10 @@ public class File
             e.printStackTrace();
         }
     }
+
+    /**
+     * Closes the file.
+     */
     public void closeFile()
     {
         try
@@ -48,6 +65,12 @@ public class File
         }
 
     }
+
+    /**
+     * Returns the next line of the file.
+     * Should be called after opening the file using openFile().
+     * @return The next line of the file.
+     */
     public String nextLine()
     {
         try
@@ -60,6 +83,11 @@ public class File
         }
         return null;
     }
+
+    /**
+     * Returns every line in the file.
+     * @return A String array containing every line in the file as a different entry.
+     */
     public String[] readFile()
     {
         String[] data;
@@ -81,10 +109,17 @@ public class File
         closeFile();
         return data;
     }
+
+    /**
+     * Writes a String to the end of the file without a new line.
+     * @param w The String to be written.
+     */
     public void write(String w)
     {
         try
         {
+            FileWriter fw = new FileWriter( path,true);
+            bw = new BufferedWriter( fw );
             bw.write( w );
             bw.close();
         }catch(IOException e)
@@ -92,6 +127,10 @@ public class File
             e.printStackTrace();
         }
     }
+
+    /**
+     * Clears the file, overwriting everything inside it.
+     */
     public void clear()
     {
         try
@@ -106,6 +145,10 @@ public class File
             e.printStackTrace();
         }
     }
+
+    /**
+     * Inserts a newline at the end of the file.
+     */
     public void newLine()
     {
         try
@@ -113,6 +156,24 @@ public class File
             FileWriter fw = new FileWriter( path,true);
             bw = new BufferedWriter( fw );
             bw.write( "\n" );
+            bw.close();
+            fw.close();
+        }catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Writes a String to the end of the file with a new line.
+     * @param w The String to be written.
+     */
+    public void writeLine(String w){
+        try
+        {
+            FileWriter fw = new FileWriter( path,true);
+            bw = new BufferedWriter( fw );
+            bw.write( w + "\n" );
             bw.close();
             fw.close();
         }catch(IOException e)
