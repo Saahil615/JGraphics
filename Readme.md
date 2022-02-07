@@ -27,7 +27,6 @@ The project is licensed under the MIT License.
 ## Special instructions 
 <ul>
 <li>The package is not yet compatible with JavaFX and works with Swing only.
-<li>The package currently is not yet fully documented.
 <li>It is recommended that you use the latest version of Java.
 <li>It is recommended that you use both Keys and Graphics together
 <li>To use either Paint or Graphics, you should first create a subclass of JGraphics.Paint or JGraphics.Graphics 
