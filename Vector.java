@@ -267,6 +267,17 @@ public class Vector{
         this.x = mag()*Math.cos(t);
         this.y = mag()*Math.sin(t);
     }
+
+    /**
+     * Applies the linear transformation in the form of a Matrix to the current Vector
+     * @param transform The input Matrix
+     */
+    public void applyTransform(Matrix transform){
+        if(transform.getRows() != 2 || transform.getColumns() != 2)
+            throw new IllegalArgumentException("Matrix must be 2x2 for a 2D Vector");
+        this.x = transform.get(0,0)*x + transform.get(1,0)*x;
+        this.y = transform.get(0,1)*y + transform.get(1,1)*y;
+    }
     public void rotateDegrees(double angle){
         rotate(Utilities.radians(angle));
     }
