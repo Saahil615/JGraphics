@@ -5,7 +5,7 @@ This package is aimed at making Java more oriented towards creative coding and c
 ## Version
 1.3.0
 ## Features
-This package has a total of 7 accessible classes:
+This package has a total of 8 accessible classes:
 <ul>
 <li>Console - This class just simplifies print statements and the console cls function
 <li>File - This class eases out File I/O
