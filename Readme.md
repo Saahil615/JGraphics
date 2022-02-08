@@ -3,7 +3,7 @@
 This package is aimed at making Java more oriented towards creative coding and creating a platform for visual drawing to be created easily
 
 ## Version
-1.2.1
+1.2.2
 ## Features
 This package has a total of 8 accessible classes:
 <ul>
