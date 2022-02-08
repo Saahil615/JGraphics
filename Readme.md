@@ -3,7 +3,7 @@
 This package is aimed at making Java more oriented towards creative coding and creating a platform for visual drawing to be created easily
 
 ## Version
-1.2.0
+1.3.0
 ## Features
 This package has a total of 7 accessible classes:
 <ul>
@@ -14,6 +14,7 @@ This package has a total of 7 accessible classes:
 <li>Keys - This class provides support for keyboard input and some other keyboard related functions
 <li>Paint - This class provides support for drawing static images
 <li>Graphics - This class provides support for drawing dynamic images
+<li>Matrix - This class provides support for matrices and linear transforms of Vectors
 </ul>
 
 ## Installation and Usage
@@ -33,4 +34,5 @@ The project is licensed under the MIT License.
     and must then override the setup() and draw() methods.
 <li>the setup() method is called once when the program starts and the draw() method is called every time the screen is refreshed.
 <li>The draw() method is never called in the Paint class and therefore only exists in the Graphics class.
+<li>Vector being 2D, only 2x2 Matrices are allowed for linear transforms.
 </ul>
