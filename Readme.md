@@ -1,6 +1,6 @@
 # JGraphics
 
-This package is aimed at making Java more oriented towards creative coding and creating a platform for visual drawing to be created easily
+This package is aimed at making Java more oriented towards creative coding and creating a platform for visual drawings to be created easily
 
 ## Version
 1.2.2
